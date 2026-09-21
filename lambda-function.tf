@@ -1,13 +1,12 @@
 resource "aws_lambda_function" "resize-lambda-function" {
-  filename         = "CreateThumbnail.zip"
+  filename         = "build/CreateThumbnail.zip"
   function_name    = "Image-Resizing-Lambda2"
   role             = aws_iam_role.lambda-role.arn
-  layers           = ["arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p39-pillow:1"]
   handler          = "CreateThumbnail.handler"
   runtime          = "python3.9"
   timeout          = 60
   memory_size      = 256
-  source_code_hash = base64sha256(filebase64sha256("CreateThumbnail.zip"))
+  source_code_hash = filebase64sha256("build/CreateThumbnail.zip")
   environment {
     variables = {
       Topic_Arn = aws_sns_topic.Resized-Image-SNS.arn

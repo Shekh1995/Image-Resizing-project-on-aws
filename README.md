@@ -113,14 +113,18 @@ terraform init
 ### Plan the deployment
 
 ```bash
+powershell -ExecutionPolicy Bypass -File ./build-lambda.ps1
 terraform plan
 ```
 
 ### Apply the configuration
 
 ```bash
+powershell -ExecutionPolicy Bypass -File ./build-lambda.ps1
 terraform apply
 ```
+
+The build step packages Pillow inside the Lambda deployment archive. This avoids relying on a cross-account third-party layer, which requires both `lambda:GetLayerVersion` on the Terraform caller and a resource-based permission on the layer owner's account.
 
 When prompted, type `yes` to confirm.
 
