@@ -1,0 +1,7 @@
+aws_access_key    = "AKI*****"
+aws_secret_key    = "r**********"
+aws_region      = "eu-west-2"
+s3-bucket-lambda-code = "non-resized-image-shekhar013-2026"
+s3-bucket-dest    = "resized-images-shekhar-2026"
+sns-name       = "Resized-Image-SNS-Topic"
+mail-id       = "shekharyashwant.511@gmail.com"
